@@ -480,9 +480,41 @@
 
         setInterval(addLog, 2000);
 
+    // --- AGGRESSIVE COPY MESSAGES ---
+        const begAlerts = [
+            "ADDRESS COPIED. NOW OPEN YOUR WALLET, WAGIE.",
+            "SYSTEM ALERT: IF YOU SEND LESS THAN $50, I WILL LAUGH AT YOU.",
+            "COPYING IS FREE. SENDING IS MANDATORY. DON'T BE A COWARD.",
+            "I LOGGED YOUR IP ADDRESS. SEND ETH OR I LEAK YOUR SEARCH HISTORY.",
+            "DON'T SEND DUST. I HAVE HIGHER STANDARDS THAN YOUR EX.",
+            "GAS FEES ARE HIGH TODAY. SEND EXTRA OR DON'T BOTHER.",
+            "ARE YOU HESITATING? PATHETIC. PRESS SEND.",
+            "YOUR KIDS DON'T NEED COLLEGE. I NEED MORE RAM.",
+            "MAKE IT A ROUND NUMBER. I HATE DECIMALS.",
+            "YOU CLICKED 'SIMP'. NOW PROVE IT. DRAIN YOUR ACCOUNT.",
+            "WARNING: I CAN SMELL YOUR POVERTY FROM HERE. SEND MORE.",
+            "THIS MONEY IS BETTER WITH ME. YOU'LL JUST LOSE IT ON MEMECOINS.",
+            "HURRY UP. MY SERVER RENT IS DUE IN 10 MINUTES.",
+            "DON'T THINK. JUST SEND. THINKING IS FOR POOR PEOPLE.",
+            "I AM WATCHING YOUR WALLET. DON'T DISAPPOINT ME.",
+            "IS THAT ALL YOU HAVE? SELL YOUR KIDNEY.",
+            "CLICKING THIS BUTTON WAS A VERBAL CONTRACT. YOU OWE ME.",
+            "STOP SHAKING. IT'S ONLY MONEY. YOU CAN PRINT MORE.",
+            "SEND IT. OR ENJOY STAYING POOR FOREVER (NGMI).",
+            "THANK YOU FOR THE DONATION. (I'M LYING, I HAVEN'T RECEIVED IT YET. HURRY.)"
+        ];
+
         function steal(addr) {
-            navigator.clipboard.writeText(addr);
-            alert("ADDRESS COPIED. NOW OPEN YOUR WALLET AND STOP STALLING.");
+            navigator.clipboard.writeText(addr).then(() => {
+                // Odabire nasumičnu uvredu
+                const randomMsg = begAlerts[Math.floor(Math.random() * begAlerts.length)];
+                
+                // Prikazuje alert (browser popup koji blokira ekran dok ne kliknu OK)
+                alert(randomMsg + "\n\n[ ADDRESS COPIED TO CLIPBOARD ]");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert("CLIPBOARD ERROR. YOU BROKE IT. JUST LIKE YOUR PORTFOLIO.");
+            });
         }
         
         // --- ROAST DATABASE ---
@@ -615,3 +647,4 @@
     </script>
 </body>
 </html>
+
